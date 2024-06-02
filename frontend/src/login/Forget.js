@@ -126,7 +126,7 @@ const Forget = () => {
       className="flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{
         backgroundImage:
-          "url('https://d3nn873nee648n.cloudfront.net/1200x1800-new/20476/PK1048596.jpg')",
+          "url('https://d3nn873nee648n.cloudfront.net/900x600/3189/20-SM107059.jpg')",
       }}
     >
       <div className="bg-white bg-opacity-80 p-10 rounded-lg shadow-lg w-96 text-center my-8 mt-20">
