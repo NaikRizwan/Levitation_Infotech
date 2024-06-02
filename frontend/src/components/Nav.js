@@ -24,48 +24,48 @@ const Nav = () => {
 
   const { state, dispatch } = useUser();
 
-  const callAbout = async () => {
-    try {
-      const response = await fetch(
-        "https://levitation-infotech.vercel.app/about",
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
+  // const callAbout = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://levitation-infotech.vercel.app/about",
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         credentials: "include",
+  //       }
+  //     );
 
-      const data = await response.json();
-      if (response.status === 400 || !data) {
-        dispatch({ type: "CLEAR_USER" });
-      } else {
-        dispatch({
-          type: "SET_USER",
-          payload: {
-            name: data.full_name,
-            email: data.email,
-            role: data.role,
-            img: data.profileImage,
-          },
-        });
-      }
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: "CLEAR_USER" });
-    }
-  };
+  //     const data = await response.json();
+  //     if (response.status === 400 || !data) {
+  //       dispatch({ type: "CLEAR_USER" });
+  //     } else {
+  //       dispatch({
+  //         type: "SET_USER",
+  //         payload: {
+  //           name: data.full_name,
+  //           email: data.email,
+  //           role: data.role,
+  //           img: data.profileImage,
+  //         },
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     dispatch({ type: "CLEAR_USER" });
+  //   }
+  // };
 
   const handleScroll = () => {
     const scrollTop = window.pageYOffset;
     setIsScrolled(scrollTop > 0);
   };
 
-  useEffect(() => {
-    callAbout();
-  }, [state.loggedIn]);
+  // useEffect(() => {
+  //   callAbout();
+  // }, [state.loggedIn]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
