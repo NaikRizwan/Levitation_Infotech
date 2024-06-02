@@ -124,6 +124,7 @@ const AddProduct = () => {
       const data = await response.json();
       if (response.status === 400 || !data) {
         dispatch({ type: "CLEAR_USER" });
+        navigate("/login");
       } else {
         dispatch({
           type: "SET_USER",
