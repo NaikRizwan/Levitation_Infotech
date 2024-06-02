@@ -461,6 +461,11 @@ router.get("/rifat", authh, (req, res) => {
 //   console.log("about");
 //   res.send(req.rootUser);
 // });
+
+router.get("/", (req, res) => {
+  // Assuming req.rootUser is an object
+  res.json({ message: "hellp world" });
+});
 router.get("/about", authh, (req, res) => {
   if (req.rootUser) {
     // Assuming req.rootUser is an object
