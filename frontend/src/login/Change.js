@@ -42,7 +42,10 @@ const Change = () => {
     if (validateForm()) {
       try {
         setLoading(true);
-        const response = await axios.post("/changepassword", formData);
+        const response = await axios.post(
+          "https://levitation-infotech.vercel.app/changepassword",
+          formData
+        );
 
         if (response.status === 200) {
           setSuccess(response.data.message);

@@ -77,17 +77,20 @@ const GenerateInvoice = () => {
 
   const generatePDF = async () => {
     try {
-      const response = await fetch("/invoices", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: state.email,
-          products,
-          date: new Date().toISOString(),
-        }),
-      });
+      const response = await fetch(
+        "https://levitation-infotech.vercel.app/invoices",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: state.email,
+            products,
+            date: new Date().toISOString(),
+          }),
+        }
+      );
 
       if (response.ok) {
         // If response is 200, generate PDF on the frontend

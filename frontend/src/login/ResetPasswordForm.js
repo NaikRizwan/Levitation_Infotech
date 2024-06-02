@@ -22,9 +22,12 @@ const ResetPasswordForm = () => {
     try {
       setLoading(true);
       // Send a POST request to your backend to update the password using the reset token
-      const response = await axios.post(`/reset-password/${resetToken}`, {
-        newPassword: password,
-      });
+      const response = await axios.post(
+        `https://levitation-infotech.vercel.app/reset-password/${resetToken}`,
+        {
+          newPassword: password,
+        }
+      );
 
       setSuccessMessage(response.data.message);
     } catch (error) {
