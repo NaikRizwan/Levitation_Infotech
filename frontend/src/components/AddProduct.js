@@ -99,17 +99,57 @@ import {
 } from "react-icons/fi";
 
 const AddProduct = () => {
-  const { state } = useUser();
+  // const { state } = useUser();
   const navigate = useNavigate();
   const [products, setProducts] = useState([
     { name: "", qty: 0, rate: 0, total: 0 },
   ]);
+  const { state, dispatch } = useUser();
+
+  const callAbout = async () => {
+    try {
+      const response = await fetch(
+        "https://levitation-infotech.vercel.app/about",
+
+        {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        }
+      );
+
+      const data = await response.json();
+      if (response.status === 400 || !data) {
+        dispatch({ type: "CLEAR_USER" });
+      } else {
+        dispatch({
+          type: "SET_USER",
+          payload: {
+            name: data.full_name,
+            email: data.email,
+            role: data.role,
+            img: data.profileImage,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "CLEAR_USER" });
+    }
+  };
 
   useEffect(() => {
-    if (!state.loggedIn) {
-      navigate("/login"); // Redirect to login if not authenticated
-    }
-  }, [state.loggedIn, navigate]);
+    callAbout();
+  }, [state.loggedIn]);
+
+  // useEffect(() => {
+  //   if (!state.loggedIn) {
+  //     navigate("/login"); // Redirect to login if not authenticated
+  //   }
+  // }, [state.loggedIn, navigate]);
 
   const handleProductChange = (index, field, value) => {
     const newProducts = [...products];

@@ -22,13 +22,13 @@ const Routing = () => {
     <>
       <Routes>
         {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<AddProduct />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/generate-invoice" element={<GenerateInvoice />} />
         <Route path="/Profile" element={<Profile />} />
 
         <Route path="/logout" element={<Logout />} />
-        <Route path="/" element={<AddProduct />} />
 
         <Route path="/forget" element={<Forget />} />
         <Route path="/changepass" element={<Change />} />
