@@ -555,7 +555,10 @@ const Register = () => {
     if (validateForm()) {
       try {
         setLoading(true);
-        const response = await axios.post("/reg", formData);
+        const response = await axios.post(
+          "https://levitation-infotech.vercel.app/reg",
+          formData
+        );
 
         if (response.status === 201) {
           setsucces(response.data.message);

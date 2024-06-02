@@ -30,7 +30,7 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch("/log", {
+      const res = await fetch("https://levitation-infotech.vercel.app/log", {
         method: "POST",
         credentials: "include",
         headers: {
