@@ -12,7 +12,30 @@ app.use(bodyParser.json());
 
 //const path = require("path"); // Add this line to import the 'path' module
 
-const whitelist = ["https://levitation-infotech-1.onrender.com/"];
+// app.use((req, res, next) => {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://zippy-kitsune-503e9c.netlify.app"
+//   );
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   // Additional headers as needed
+//   // ...
+//   next();
+// });
+
+// const whitelist = ["https://zippy-kitsune-503e9c.netlify.app"];
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || whitelist.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+const whitelist = ["https://levitation-infotech-1.onrender.com"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
