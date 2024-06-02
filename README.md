@@ -24,7 +24,7 @@ This is a full-featured MERN stack application that includes user authentication
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
+git clone https://github.com/NaikRizwan/Levitation_Infotech.git
 cd your-repo-name
 ```
 
