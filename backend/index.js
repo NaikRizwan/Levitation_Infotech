@@ -9,21 +9,22 @@ const port = process.env.PORT || 5000; // You can change this port
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// const path = require("path"); // Add this line to import the 'path' module
 
-// const whitelist = ["http://localhost:3002/"];
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin || whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true,
-// };
-// app.use(cors(corsOptions));
-app.use(cors());
+//const path = require("path"); // Add this line to import the 'path' module
+
+const whitelist = ["https://levitation-infotech-1.onrender.com/"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+app.use(cors(corsOptions));
+//app.use(cors());
 
 dotenv.config({ path: "./config.env" });
 const cookieParser = require("cookie-parser");
