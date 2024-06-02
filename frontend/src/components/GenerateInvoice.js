@@ -65,49 +65,15 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 
 const GenerateInvoice = () => {
+  const { state } = useUser();
+
   const navigate = useNavigate();
   const products = JSON.parse(localStorage.getItem("products"));
 
-  const { state, dispatch } = useUser();
-
-  const callAbout = async () => {
-    try {
-      const response = await fetch(
-        "https://levitation-infotech.vercel.app/about",
-
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
-
-      const data = await response.json();
-      if (response.status === 400 || !data) {
-        dispatch({ type: "CLEAR_USER" });
-        navigate("/login");
-      } else {
-        dispatch({
-          type: "SET_USER",
-          payload: {
-            name: data.full_name,
-            email: data.email,
-            role: data.role,
-            img: data.profileImage,
-          },
-        });
-      }
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: "CLEAR_USER" });
-    }
-  };
-
   useEffect(() => {
-    callAbout();
+    if (!state.loggedIn) {
+      navigate("/login"); // Redirect to login if not authenticated
+    }
   }, [state.loggedIn]);
 
   const generatePDF = async () => {
