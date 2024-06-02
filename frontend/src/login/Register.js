@@ -536,7 +536,9 @@ const Register = () => {
         return;
       }
       setOtpLoading(true);
-      await axios.post("/generate-otp", { email: formData.email });
+      await axios.post("https://levitation-infotech.vercel.app/generate-otp", {
+        email: formData.email,
+      });
       setOtpSent(true);
       setTimerActive(true);
       setOtpSent1(true);
